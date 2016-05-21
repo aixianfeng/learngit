@@ -1,0 +1,27 @@
+1.mkdir /var/www/mysite/mysite/static
+2.cd /var/www/mysite/mysite/static 
+	python manage.py collectstatic
+3.mkdir /var/www/mysite/mysite/media
+
+Settings:
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+Note: Don't forget trailing slash
+
+STATICFILES_DIRS = ('URL that contains the css files',)
+THE URL can be found by the command: find / -name '*static'
+
+
+Set the /ect/apache2/sites-availabel/000-default.conf
+
+Alias /static/ /var/www/mysite/mysite/static/
+Alias /media/ /var/www/mysite/mysite/media/
+
+<Directory /var/www/mysite/mysite/static>
+	Require all granted
+</Directory>
+
+<Directory /var/www/mysite/mysite/media>
+	Require all granted
+</Directory>
+
